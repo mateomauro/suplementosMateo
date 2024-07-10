@@ -1,0 +1,27 @@
+<table class="table table-bordered table-striped text-center">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Compra</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let suplemento of suplementos" [ngClass]="{'clearance': suplemento.clearance}">
+            <td><img [src]="suplemento.image" class="foto-tabla"></td>
+            <td>{{suplemento.name }}</td>
+            <td>{{suplemento.type}}</td>
+            <td>{{suplemento.price}}</td>
+            <td><span class="badge badge-warning" *ngIf="suplemento.stock==0">SIN STOCK</span></td>
+            <td>
+                <app-input-integer [suplemento]="suplemento"></app-input-integer>
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="addToCart(suplemento)">Comprar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
